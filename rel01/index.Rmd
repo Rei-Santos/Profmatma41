@@ -1,53 +1,493 @@
 ---
-title: "Relatório 01 - Introdução ao R"
-author: "Ben Dêivide"
-date: "12/04/2022"
-header-includes:
-  - \usepackage{titling}
-  - \pretitle{\begin{center}
-    \includegraphics[width=2in,height=2in]{ufsj.png}\LARGE\\}
-  - \posttitle{\end{center}}
-toc-title: "Sumário"
-output:
-  
-  bookdown::html_document2: 
-    theme: journal
-    highlight: tango
-    toc: yes
-    number_sections: yes
-    includes:
-      in_header: logo.html
-  pdf_document:
-    
-    toc: yes
-    number_sections: yes
+title: "DO RSTUDIO À WEB: CRIAÇÃO, ORGANIZAÇÃO E PUBLICAÇÃO DE UM RELATÓRIO"
+author: "Reinaldo Gomes"
+format:
+  html:
+    toc: false
+    toc-depth: 3
+    number-sections: true
+    theme: cosmo
+    lang: pt-BR
 ---
 
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
+<style>
+.logo-ufsj {
+  position: fixed;
+  top: 20px;
+  right: 25px;
+  width: 100px;
+  height: auto;
+  z-index: 1000;
+}
+</style>
+
+<img src="ufsj.png" class="logo-ufsj">
+
+## SUMARIO
+
+1.	APRESENTAÇÃO DO TRABALHO
+2.	POR QUE APRENDER A PUBLICAR RELATÓRIOS?
+3.	CONHECENDO O AMBIENTE DE TRABALHO
+3.1 R e sua finalidade
+3.2 RStudio como ambiente de desenvolvimento
+3.3 Git e controle de versões
+3.4 GitHub e armazenamento online
+4.	PLANEJAMENTO DO PROJETO
+4.1 Organização das pastas
+4.2 Criação do projeto no RStudio
+4.3 Estrutura dos arquivos
+5.	PRODUZINDO O PRIMEIRO DOCUMENTO
+5.1 Criação do arquivo Quarto
+5.2 Configuração inicial
+5.3 Inserção de textos
+5.4 Geração do arquivo HTML
+6.	COLOCANDO O PROJETO SOB CONTROLE DO GIT
+6.1 Verificando o Git
+6.2 Registrando os arquivos
+6.3 Criando o primeiro commit
+7.	TRANSFERINDO O PROJETO PARA O GITHUB
+7.1 Preparação da conta
+7.2 Criação do repositório remoto
+7.3 Conexão entre RStudio e GitHub
+7.4 Envio dos arquivos
+8.	TRANSFORMANDO O RELATÓRIO EM UMA PÁGINA WEB
+8.1 GitHub Pages
+8.2 Configuração da página
+8.3 Acesso ao endereço publicado
+9.	CONFERÊNCIA DO PROJETO FINAL
+10.	CONSIDERAÇÕES FINAIS
+11.	REFERÊNCIAS
+
+
+# APRESENTAÇÃO DO TRABALHO
+
+A produção de relatórios digitais pode ser realizada utilizando ferramentas gratuitas que permitem escrever textos, executar cálculos, criar gráficos e disponibilizar os resultados pela Internet. Entre essas ferramentas estão o R, o RStudio, o Git e o GitHub.
+
+Este trabalho apresenta uma proposta diferente de organização para explicar esse processo. Em vez de abordar somente a criação do relatório, o conteúdo será apresentado como um percurso: primeiro serão conhecidas as ferramentas, depois será criado e organizado o projeto, em seguida serão produzidos os arquivos e, finalmente, o material será enviado para a Internet.
+
+O objetivo é que uma pessoa que esteja tendo seu primeiro contato com essas ferramentas consiga acompanhar as etapas sem precisar possuir conhecimentos avançados de programação.
+
+# POR QUE APRENDER A PUBLICAR RELATÓRIOS?
+
+Um relatório digital pode ser mais do que um arquivo salvo no computador. Quando ele é transformado em uma página Web, pode ser acessado por outras pessoas por meio de um endereço na Internet.
+
+Essa possibilidade é útil em trabalhos acadêmicos, atividades de pesquisa, projetos escolares, apresentações de resultados e organização de informações.
+
+O processo também permite aprender diferentes etapas de um projeto digital. O R pode ser utilizado para realizar cálculos e produzir gráficos, o RStudio organiza o desenvolvimento, o Git registra as alterações e o GitHub permite armazenar e compartilhar os arquivos.
+
+Assim, aprender esse procedimento significa também conhecer uma forma de organizar, versionar e divulgar trabalhos.
+
+# CONHECENDO O AMBIENTE DE TRABALHO
+
+Antes de iniciar a criação do relatório, é importante entender a função de cada ferramenta.
+
+## R e sua finalidade
+
+O R é uma linguagem utilizada para realizar cálculos, trabalhar com dados, criar gráficos e produzir análises.
+
+Seu funcionamento é baseado em comandos. O usuário informa uma instrução e o R executa aquilo que foi solicitado.
+
+Por exemplo, podemos utilizar:
+
+```{r}
+numeros <- c(10, 20, 30, 40, 50)
+mean(numeros)
 ```
---- 
 
-# Objetivo
+Nesse exemplo, o R recebe cinco números e calcula a média.
 
-Descrever as ideias básicas sobre o ambiente R:
+Portanto, não é necessário utilizar o R apenas para tarefas complexas. Ele também pode ser empregado em operações simples que ajudam na elaboração de um relatório.
 
-- Como instalar o R e RStudio;
-- Diferenças entre o R e a IDE RStudio;
-- Como o R trabalha;
-- Comandos elementares;
-- Objetos;
-- Manipulação com objetos;
-- Importação de dados;
-- Pacotes:
-  - Instalação;
-  - Como usar.
+## RStudio como ambiente de desenvolvimento
 
-# Apresentação do relatório
+O RStudio é um ambiente que facilita o trabalho com o R. Nele podemos criar projetos, escrever códigos, produzir documentos, visualizar gráficos e acompanhar os resultados.
 
-Diante do objetivo do relatório, apresentaremos nas próximas subseções, os pontos a serem discutidos.
+Podemos imaginar o RStudio como uma mesa de trabalho. O R é responsável pela execução dos comandos, enquanto o RStudio fornece um espaço organizado para trabalhar com esses comandos e com os arquivos do projeto.
 
-## Como instalar o R e o RStudio
+Uma configuração importante para este trabalho é verificar o terminal utilizado pelo RStudio.
 
+No menu, pode-se acessar:
 
+**Tools → Global Options → Terminal**
 
+Em seguida, deve-se verificar se o **Git Bash** está selecionado. Quando o terminal estiver funcionando corretamente, uma identificação semelhante a **MINGW64** poderá aparecer.
+
+## Git e controle de versões
+
+O Git é uma ferramenta utilizada para controlar as alterações realizadas nos arquivos de um projeto.
+
+Uma forma simples de compreender seu funcionamento é imaginar um caderno de registros. Sempre que uma etapa importante é concluída, podemos registrar aquele estado do projeto.
+
+Entre os comandos básicos estão:
+
+```text
+git status
+git add .
+git commit -m "Primeira versão do projeto"
+```
+
+O primeiro comando verifica a situação dos arquivos. O segundo prepara os arquivos para serem registrados e o terceiro cria um registro das alterações.
+
+## GitHub e armazenamento online
+
+O GitHub é uma plataforma online que permite armazenar e compartilhar projetos.
+
+É importante não confundir Git com GitHub. O Git funciona como sistema de controle de versões, enquanto o GitHub é um serviço online onde o projeto pode ser armazenado e disponibilizado para outras pessoas.
+
+A combinação das ferramentas pode ser representada da seguinte maneira:
+
+**R → produção dos resultados**
+
+**RStudio → organização e desenvolvimento**
+
+**Git → controle das alterações**
+
+**GitHub → armazenamento e compartilhamento**
+
+# PLANEJAMENTO DO PROJETO
+
+Antes de começar a escrever, é importante organizar os arquivos. Uma boa organização evita dificuldades durante a publicação.
+
+## Organização das pastas
+
+Para este trabalho, será utilizada uma estrutura semelhante à seguinte:
+
+```text
+Profmat_MA41/
+├── imagens/
+├── info/
+├── rel01/
+├── rel02/
+├── rel03/
+├── relXX/
+├── suporte/
+├── index.qmd
+├── index.html
+├── .gitignore
+├── logo.html
+└── Profmat_MA41.Rproj
+```
+
+Cada pasta pode receber arquivos relacionados a uma parte do projeto.
+
+A pasta **imagens**, por exemplo, pode armazenar figuras utilizadas nos relatórios. As pastas **rel01**, **rel02**, **rel03** e outras podem ser utilizadas para separar diferentes trabalhos.
+
+## Criação do projeto no RStudio
+
+Para começar, abra o RStudio.
+
+Depois, selecione:
+
+**File → New Project**
+
+Será aberta uma janela com algumas opções.
+
+Selecione:
+
+**New Directory → New Project**
+
+Informe o nome desejado para o projeto:
+
+**Profmat_MA41**
+
+Escolha o local onde o projeto será armazenado e clique em **Create Project**.
+
+O RStudio criará uma pasta própria para o projeto e também um arquivo com extensão `.Rproj`.
+
+## Estrutura dos arquivos
+
+Após a criação do projeto, os arquivos podem ser adicionados de acordo com a organização definida anteriormente.
+
+Essa etapa é importante porque o relatório poderá utilizar imagens, códigos e outros documentos. Quando todos os arquivos estão organizados dentro do projeto, torna-se mais fácil localizar cada elemento.
+
+# PRODUZINDO O PRIMEIRO DOCUMENTO
+
+Com o projeto pronto, podemos iniciar a produção do relatório.
+
+## Criação do arquivo Quarto
+
+No RStudio, selecione:
+
+**File → New File → Quarto Document**
+
+Será aberta uma janela para configurar o documento.
+
+No campo **Title**, informe o título do trabalho.
+
+No campo **Author**, informe o nome do autor.
+
+No campo **Format**, escolha:
+
+**HTML**
+
+Depois, clique em **Create**.
+
+O RStudio criará um arquivo com extensão `.qmd`.
+
+## Configuração inicial
+
+No início do arquivo aparecerá uma configuração semelhante a:
+
+```text
+---
+title: "Meu primeiro relatório"
+author: "Reinaldo Gomes"
+format: html
+---
+```
+
+Essa parte é chamada de cabeçalho do documento e informa características importantes do relatório.
+
+Nesse caso, o documento terá um título, um autor e será produzido no formato HTML.
+
+## Inserção de textos
+
+Depois do cabeçalho, podemos escrever normalmente.
+
+Por exemplo:
+
+> Este relatório apresenta as etapas necessárias para criar, organizar e publicar um documento utilizando ferramentas gratuitas de produção e compartilhamento de conteúdo.
+
+Também é possível criar títulos utilizando símbolos.
+
+Por exemplo:
+
+```text
+# Título principal
+
+## Segundo título
+
+### Subtítulo
+```
+
+Dessa forma, o texto fica organizado em diferentes níveis.
+
+## Geração do arquivo HTML
+
+Depois de terminar uma parte do documento, podemos gerar o resultado final.
+
+No RStudio, procure a opção:
+
+**Render**
+
+Ao clicar nesse botão, o RStudio processará o arquivo `.qmd`.
+
+O resultado será um documento HTML que pode ser aberto em um navegador.
+
+O processo pode ser resumido como:
+
+**Escrita → Código → Execução → Resultado → HTML**
+
+# COLOCANDO O PROJETO SOB CONTROLE DO GIT
+
+Depois de criar o relatório, iniciaremos o controle das versões.
+
+## Verificando o Git
+
+No terminal do RStudio, podemos utilizar:
+
+```text
+git --version
+```
+
+Se o Git estiver instalado corretamente, será apresentada a versão instalada.
+
+Também podemos verificar os arquivos do projeto utilizando:
+
+```text
+git status
+```
+
+## Registrando os arquivos
+
+Para preparar os arquivos, utilizamos:
+
+```text
+git add .
+```
+
+Esse comando adiciona os arquivos do projeto à área de preparação do Git.
+
+## Criando o primeiro commit
+
+Depois disso, podemos registrar a primeira versão:
+
+```text
+git commit -m "Primeira versão do relatório"
+```
+
+O commit funciona como um ponto de registro do projeto.
+
+Se fizermos novas alterações posteriormente, poderemos criar novos commits para registrar essas mudanças.
+
+# TRANSFERINDO O PROJETO PARA O GITHUB
+
+Depois de organizar os arquivos localmente, o próximo passo é colocá-los em um repositório online.
+
+## Preparação da conta
+
+Primeiramente, é necessário possuir uma conta no GitHub.
+
+Acesse o site oficial do GitHub, escolha a opção de criação de conta e siga as instruções apresentadas.
+
+Depois da criação, faça o login.
+
+## Criação do repositório remoto
+
+Dentro da conta, procure a opção para criar um novo repositório.
+
+Escolha um nome, por exemplo:
+
+**Profmatma41**
+
+Pode ser adicionada uma descrição, como:
+
+**Projeto de criação e publicação de relatórios.**
+
+Para permitir que o trabalho seja acessado por outras pessoas, o repositório pode ser configurado como **Public**.
+
+Depois, clique em **Create repository**.
+
+## Conexão entre RStudio e GitHub
+
+Para facilitar a conexão entre o projeto e o GitHub, podemos utilizar o pacote `usethis`.
+
+Caso ele ainda não esteja instalado, utilize o seguinte comando no **Console do RStudio**:
+
+```r
+install.packages("usethis")
+```
+
+Depois, podemos configurar as informações do usuário:
+
+```r
+usethis::use_git_config(
+  user.name = "Reinaldo Gomes",
+  user.email = "seu@email.com"
+)
+```
+
+Substitua `seu@email.com` pelo e-mail utilizado na sua conta do GitHub.
+
+Para autenticação, podemos criar um token utilizando:
+
+```r
+usethis::create_github_token()
+```
+
+O token deve ser tratado como uma senha e não deve ser publicado nos arquivos do projeto.
+
+Também pode ser utilizado:
+
+```r
+usethis::edit_r_environ()
+```
+
+Nesse arquivo, a credencial poderá ser configurada conforme as orientações apresentadas pelo GitHub e pelo `usethis`.
+
+## Envio dos arquivos
+
+Depois da configuração, o projeto pode ser transformado em um repositório Git:
+
+```r
+usethis::use_git()
+```
+
+Em seguida, podemos realizar a conexão com o GitHub:
+
+```r
+usethis::use_github()
+```
+
+Depois disso, os arquivos poderão ser enviados para o repositório remoto.
+
+# TRANSFORMANDO O RELATÓRIO EM UMA PÁGINA WEB
+
+Uma das etapas mais interessantes do trabalho é transformar o arquivo produzido em uma página acessível pela Internet.
+
+## GitHub Pages
+
+O GitHub possui um recurso chamado **GitHub Pages**, que permite publicar páginas Web a partir de um repositório.
+
+Para que o relatório possa ser acessado pelo navegador, é necessário configurar esse recurso.
+
+## Configuração da página
+
+Abra o repositório criado no GitHub.
+
+Depois, entre em:
+
+**Settings → Pages**
+
+Na área **Build and deployment**, procure a opção **Source**.
+
+Selecione:
+
+**Deploy from a branch**
+
+Depois, escolha:
+
+**Branch: main**
+
+E:
+
+**Folder: /(root)**
+
+Clique em **Save**.
+
+O GitHub começará o processo de publicação.
+
+## Acesso ao endereço publicado
+
+Após a configuração, o GitHub Pages apresentará um endereço para a página.
+
+Esse endereço pode ser aberto em qualquer navegador com acesso à Internet.
+
+Dessa forma, o relatório deixa de estar somente armazenado no computador e passa a estar disponível online.
+
+# CONFERÊNCIA DO PROJETO FINAL
+
+Antes de considerar o trabalho concluído, é importante verificar se todas as etapas foram realizadas corretamente.
+
+Devemos conferir:
+
+- se o projeto abre normalmente no RStudio;
+- se o arquivo `.qmd` está funcionando;
+- se os textos aparecem corretamente;
+- se o relatório HTML foi gerado;
+- se o Git reconhece os arquivos;
+- se as alterações foram registradas;
+- se os arquivos estão no GitHub;
+- se o repositório está configurado corretamente;
+- se o GitHub Pages foi ativado;
+- se a página pode ser acessada pelo navegador.
+
+Essa conferência ajuda a identificar possíveis problemas antes da entrega ou divulgação do trabalho.
+
+# CONSIDERAÇÕES FINAIS
+
+A realização deste trabalho mostrou que a criação e publicação de um relatório digital pode ser dividida em etapas simples e organizadas.
+
+Inicialmente, foram apresentadas as funções do R, RStudio, Git e GitHub. Em seguida, foi criado um projeto no RStudio e definida uma estrutura para organizar os arquivos.
+
+Posteriormente, foi produzido um documento utilizando Quarto, combinando textos e comandos em R. O documento foi transformado em HTML, permitindo sua visualização em um navegador.
+
+Na etapa seguinte, foi apresentado o uso do Git para controlar as alterações do projeto e o GitHub para armazenar os arquivos online. Por fim, foi demonstrado como utilizar o GitHub Pages para disponibilizar o relatório na Internet.
+
+O principal resultado esperado é que o leitor consiga repetir esse processo em seus próprios trabalhos. Mesmo sem experiência anterior em programação, é possível aprender a utilizar essas ferramentas quando as etapas são apresentadas de maneira gradual e organizada.
+
+Assim, o trabalho não ensina apenas a produzir um relatório, mas também apresenta uma forma de organizar, versionar e compartilhar um projeto acadêmico na Web.
+
+# REFERÊNCIAS
+
+Vídeo 1. Disponível em:
+
+<https://youtu.be/sY4eo3eUR-c?si=PEvwTL-gjRl-cp1s>
+
+Vídeo 2. Disponível em:
+
+<https://youtu.be/nhh323kMWqo?si=IvcJAm1V7bWuXfq3>
+
+Ajuda da IA:
+
+<https://chatgpt.com/>
