@@ -1,6 +1,6 @@
 ---
 title: "Relatórios da Disciplina MA 41 - Estatística e Probabilidade (PROFMAT)"
-author: "[Reinaldo Gomes](https://Rei-Santos.github.io) | PROFMAT
+author: "[Reinaldo Gomes](https://Rei-Santos.github.io) | PROFMAT"
 date: "`r format(Sys.time(), '%d %B, %Y, %Hh:%Mmin:%Sseg')`"
 toc-title: "Sumário"
 output:
@@ -167,4 +167,3 @@ Relatórios desenvolvidos:
 - [Relatório 01 (26/08/2026)](rel01/index.html){target="_blank"}
 - [Relatório 02 (01/09/2026)](rel02/index.html){target="_blank"}
 - [Relatório 03 (15/09/2026)](rel03/index.html){target="_blank"}
-- ...
