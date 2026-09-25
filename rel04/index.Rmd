@@ -1,29 +1,21 @@
 ---
-
 title: "Relatório 4 — Fundamentos da Teoria das Probabilidades"
-author: "Reinaldo Gomes"
+
+author:
+  - name: "Reinaldo Gomes"
+
 date: "24 de setembro de 2026"
+
 lang: pt-BR
+
 format:
-html:
-toc: true
-toc-depth: 3
-number-sections: true
-code-fold: false
-smooth-scroll: true
--------------------
-
-# Introdução
-
-A teoria das probabilidades constitui uma das principais áreas da Matemática voltadas ao estudo de fenômenos aleatórios. Diferentemente de situações determinísticas, nas quais as condições conhecidas permitem prever exatamente o resultado, nos fenômenos aleatórios existe incerteza sobre o resultado que será observado, ainda que seja possível identificar os resultados possíveis e atribuir probabilidades a eles.
-
-O estudo da probabilidade possui grande importância tanto na Matemática quanto em diversas áreas do conhecimento, como Estatística, Ciências da Natureza, Economia, Medicina, Engenharia e Educação. Na Educação Básica, seus conceitos aparecem em situações relacionadas a jogos, pesquisas, experimentos aleatórios, interpretação de informações estatísticas e análise de riscos.
-
-Este relatório apresenta os principais fundamentos da teoria das probabilidades estudados em aula. O objetivo não é apenas apresentar definições, mas organizar os conceitos, explicar suas relações, demonstrar propriedades e teoremas, construir exemplos e contraexemplos e refletir sobre suas possibilidades de aplicação no ensino de Matemática.
-
-Inicialmente são apresentados os conceitos básicos de conjuntos no contexto probabilístico. Em seguida, é introduzida a definição de probabilidade por meio dos axiomas de Kolmogorov e são demonstradas propriedades fundamentais decorrentes desses axiomas. Posteriormente, são discutidos a independência de eventos, o Teorema da Probabilidade Total e o Teorema de Bayes.
-
-Ao final, os conhecimentos desenvolvidos são aplicados à situação-problema denominada "O teste da Doença Rara na Escola", na qual será analisada a probabilidade de um estudante realmente possuir determinada doença após receber um resultado positivo em um teste diagnóstico.
+  html:
+    toc: false
+    toc-depth: 3
+    number-sections: true
+    code-fold: false
+    smooth-scroll: true
+---
 
 # Sumário
 
@@ -68,6 +60,20 @@ Ao final, os conhecimentos desenvolvidos são aplicados à situação-problema d
    9.3 Interpretação do resultado
    9.4 Por que a resposta não é 90%?
 10. Considerações finais
+11. Síntese dos principais resultados
+12. Conclusão
+
+# Introdução
+
+A teoria das probabilidades constitui uma das principais áreas da Matemática voltadas ao estudo de fenômenos aleatórios. Diferentemente de situações determinísticas, nas quais as condições conhecidas permitem prever exatamente o resultado, nos fenômenos aleatórios existe incerteza sobre o resultado que será observado, ainda que seja possível identificar os resultados possíveis e atribuir probabilidades a eles.
+
+O estudo da probabilidade possui grande importância tanto na Matemática quanto em diversas áreas do conhecimento, como Estatística, Ciências da Natureza, Economia, Medicina, Engenharia e Educação. Na Educação Básica, seus conceitos aparecem em situações relacionadas a jogos, pesquisas, experimentos aleatórios, interpretação de informações estatísticas e análise de riscos.
+
+Este relatório apresenta os principais fundamentos da teoria das probabilidades estudados em aula. O objetivo não é apenas apresentar definições, mas organizar os conceitos, explicar suas relações, demonstrar propriedades e teoremas, construir exemplos e contraexemplos e refletir sobre suas possibilidades de aplicação no ensino de Matemática.
+
+Inicialmente são apresentados os conceitos básicos de conjuntos no contexto probabilístico. Em seguida, é introduzida a definição de probabilidade por meio dos axiomas de Kolmogorov e são demonstradas propriedades fundamentais decorrentes desses axiomas. Posteriormente, são discutidos a independência de eventos, o Teorema da Probabilidade Total e o Teorema de Bayes.
+
+Ao final, os conhecimentos desenvolvidos são aplicados à situação-problema denominada "O teste da Doença Rara na Escola", na qual será analisada a probabilidade de um estudante realmente possuir determinada doença após receber um resultado positivo em um teste diagnóstico.
 
 # Conceitos básicos de conjuntos no contexto probabilístico
 
