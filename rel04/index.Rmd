@@ -4,7 +4,8 @@ title: "Relatório 4 — Fundamentos da Teoria das Probabilidades"
 author:
   - name: "Reinaldo Gomes"
 
-date: "24 de setembro de 2026"
+date: "date: 2026-09-24"
+
 
 lang: pt-BR
 
