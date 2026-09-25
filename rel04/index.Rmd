@@ -1,38 +1,924 @@
 ---
-title: "Relatório 02"
-author: "Ben Dêivide"
-date: "12/04/2022"
-header-includes:
-  - \usepackage{titling}
-  - \pretitle{\begin{center}
-    \includegraphics[width=2in,height=2in]{ufsj.png}\LARGE\\}
-  - \posttitle{\end{center}}
-toc-title: "Sumário"
-output:
-  
-  html_document:
-    theme: journal
-    highlight: tango
-    toc: yes
-    number_sections: yes
-    includes:
-      in_header: logo.html
-  pdf_document:
-    
-    toc: yes
-    number_sections: yes
----
 
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
-```
---- 
+title: "Relatório 4 — Fundamentos da Teoria das Probabilidades"
+author: "Reinaldo Gomes"
+date: "24 de setembro de 2026"
+lang: pt-BR
+format:
+html:
+toc: true
+toc-depth: 3
+number-sections: true
+code-fold: false
+smooth-scroll: true
+-------------------
 
-# Objetivo
+# Introdução
 
-Descrever o objetivo do relatório!
+A teoria das probabilidades constitui uma das principais áreas da Matemática voltadas ao estudo de fenômenos aleatórios. Diferentemente de situações determinísticas, nas quais as condições conhecidas permitem prever exatamente o resultado, nos fenômenos aleatórios existe incerteza sobre o resultado que será observado, ainda que seja possível identificar os resultados possíveis e atribuir probabilidades a eles.
 
-# Apresentação do relatório
+O estudo da probabilidade possui grande importância tanto na Matemática quanto em diversas áreas do conhecimento, como Estatística, Ciências da Natureza, Economia, Medicina, Engenharia e Educação. Na Educação Básica, seus conceitos aparecem em situações relacionadas a jogos, pesquisas, experimentos aleatórios, interpretação de informações estatísticas e análise de riscos.
 
-Aqui será o local para apresentar o material sobre o relatório.
+Este relatório apresenta os principais fundamentos da teoria das probabilidades estudados em aula. O objetivo não é apenas apresentar definições, mas organizar os conceitos, explicar suas relações, demonstrar propriedades e teoremas, construir exemplos e contraexemplos e refletir sobre suas possibilidades de aplicação no ensino de Matemática.
 
+Inicialmente são apresentados os conceitos básicos de conjuntos no contexto probabilístico. Em seguida, é introduzida a definição de probabilidade por meio dos axiomas de Kolmogorov e são demonstradas propriedades fundamentais decorrentes desses axiomas. Posteriormente, são discutidos a independência de eventos, o Teorema da Probabilidade Total e o Teorema de Bayes.
+
+Ao final, os conhecimentos desenvolvidos são aplicados à situação-problema denominada "O teste da Doença Rara na Escola", na qual será analisada a probabilidade de um estudante realmente possuir determinada doença após receber um resultado positivo em um teste diagnóstico.
+
+# Sumário
+
+1. Introdução
+2. Conceitos básicos de conjuntos no contexto probabilístico
+   2.1 Espaço amostral
+   2.2 Eventos
+   2.3 Operações entre eventos
+   2.4 Eventos mutuamente exclusivos
+   2.5 Exemplos e contraexemplos
+3. Axiomas de Kolmogorov
+   3.1 Primeiro axioma
+   3.2 Segundo axioma
+   3.3 Terceiro axioma
+   3.4 Interpretação dos axiomas
+4. Propriedades da probabilidade
+   4.1 Probabilidade do evento impossível
+   4.2 Probabilidade do evento certo
+   4.3 Probabilidade do evento complementar
+   4.4 Monotonicidade
+   4.5 Aditividade para eventos disjuntos
+   4.6 Probabilidade da união de eventos não disjuntos
+5. Independência de eventos
+   5.1 Definição
+   5.2 Independência e exclusão mútua
+   5.3 Independência de múltiplos eventos
+   5.4 Exemplos e contraexemplos
+6. Teorema da Probabilidade Total
+   6.1 Partição do espaço amostral
+   6.2 Enunciado
+   6.3 Demonstração
+   6.4 Exemplo de aplicação
+7. Teorema de Bayes
+   7.1 Enunciado
+   7.2 Demonstração
+   7.3 Interpretação
+   7.4 Exemplo de aplicação
+8. Aplicação na Educação Básica
+9. Situação-problema: O teste da Doença Rara na Escola
+   9.1 Organização dos dados
+   9.2 Aplicação do Teorema de Bayes
+   9.3 Interpretação do resultado
+   9.4 Por que a resposta não é 90%?
+10. Considerações finais
+
+# Conceitos básicos de conjuntos no contexto probabilístico
+
+A teoria das probabilidades utiliza diversos conceitos provenientes da teoria dos conjuntos. Essa relação é importante porque os resultados possíveis de um experimento aleatório podem ser organizados como conjuntos, permitindo representar matematicamente os eventos e realizar operações entre eles.
+
+## Espaço amostral
+
+O espaço amostral é o conjunto formado por todos os resultados possíveis de um experimento aleatório. Usaremos a letra grega Ω para representar o espaço amostral.
+
+Por exemplo, ao lançar uma moeda uma única vez, podemos representar o espaço amostral por:
+
+Ω = {cara, coroa}
+
+Ao lançar um dado comum de seis faces:
+
+Ω = {1, 2, 3, 4, 5, 6}
+
+O espaço amostral deve conter todos os resultados considerados possíveis para o experimento que está sendo estudado.
+
+Em espaços amostrais finitos, podemos listar diretamente seus elementos. Em espaços amostrais enumeráveis, os resultados também podem ser organizados em uma sequência, mesmo que existam infinitos resultados.
+
+## Eventos
+
+Um evento é um subconjunto do espaço amostral.
+
+Considerando o lançamento de um dado:
+
+Ω = {1, 2, 3, 4, 5, 6}
+
+O evento A = "obter um número par" pode ser representado por:
+
+A = {2, 4, 6}
+
+O evento B = "obter um número maior que 4" pode ser representado por:
+
+B = {5, 6}
+
+Assim, todo evento é formado por resultados pertencentes ao espaço amostral.
+
+Um evento pode conter um único resultado, vários resultados ou até mesmo todos os resultados possíveis.
+
+## Operações entre eventos
+
+As operações entre conjuntos permitem representar relações entre eventos.
+
+### União
+
+A união de dois eventos A e B, indicada por A ∪ B, representa a ocorrência de A ou de B, incluindo a possibilidade de ambos ocorrerem.
+
+Exemplo:
+
+A = {2, 4, 6}
+
+B = {4, 5, 6}
+
+Então:
+
+A ∪ B = {2, 4, 5, 6}
+
+### Interseção
+
+A interseção de A e B, indicada por A ∩ B, representa os resultados pertencentes simultaneamente aos dois eventos.
+
+No exemplo anterior:
+
+A ∩ B = {4, 6}
+
+Portanto, os resultados 4 e 6 pertencem aos dois eventos.
+
+### Complementar
+
+O complementar de um evento A, indicado por Aᶜ, representa todos os resultados do espaço amostral que não pertencem a A.
+
+Se:
+
+Ω = {1, 2, 3, 4, 5, 6}
+
+e:
+
+A = {2, 4, 6}
+
+então:
+
+Aᶜ = {1, 3, 5}
+
+O evento complementar representa a não ocorrência de A.
+
+### Diferença
+
+A diferença entre A e B, indicada por A - B, corresponde aos elementos que pertencem a A, mas não pertencem a B.
+
+Se:
+
+A = {1, 2, 3, 4}
+
+B = {3, 4, 5, 6}
+
+então:
+
+A - B = {1, 2}
+
+## Eventos mutuamente exclusivos
+
+Dois eventos são mutuamente exclusivos quando não podem ocorrer simultaneamente.
+
+Formalmente, A e B são mutuamente exclusivos quando:
+
+A ∩ B = ∅
+
+onde ∅ representa o conjunto vazio.
+
+Por exemplo, no lançamento de um dado:
+
+A = "obter número par"
+
+B = "obter número ímpar"
+
+Como nenhum resultado pode ser simultaneamente par e ímpar:
+
+A ∩ B = ∅
+
+Portanto, A e B são mutuamente exclusivos.
+
+É importante observar que eventos mutuamente exclusivos não são necessariamente independentes. Essa diferença será discutida posteriormente.
+
+## Exemplos e contraexemplos
+
+Considere o lançamento de um dado.
+
+Se:
+
+A = {1, 2}
+
+B = {3, 4}
+
+então:
+
+A ∩ B = ∅
+
+Logo, os eventos são mutuamente exclusivos.
+
+Agora considere:
+
+A = {1, 2, 3}
+
+B = {3, 4, 5}
+
+Nesse caso:
+
+A ∩ B = {3}
+
+Portanto, os eventos não são mutuamente exclusivos.
+
+Esse exemplo mostra que a existência de um resultado comum entre dois eventos impede que eles sejam mutuamente exclusivos.
+
+# Axiomas de Kolmogorov
+
+A probabilidade pode ser definida matematicamente por meio dos axiomas de Kolmogorov. Esses axiomas estabelecem as condições fundamentais que qualquer medida de probabilidade deve satisfazer.
+
+Considerando um espaço amostral Ω e um evento A, representamos sua probabilidade por P(A).
+
+Para espaços amostrais finitos ou enumeráveis, sem a necessidade de introduzir formalmente o conceito de σ-álgebra, os três axiomas fundamentais são os seguintes.
+
+## Primeiro axioma: não negatividade
+
+Para todo evento A:
+
+P(A) ≥ 0
+
+Isso significa que uma probabilidade nunca pode ser negativa.
+
+Uma quantidade como -0,20 não pode representar uma probabilidade.
+
+## Segundo axioma: probabilidade do espaço amostral
+
+A probabilidade de ocorrer algum resultado pertencente ao espaço amostral é igual a 1:
+
+P(Ω) = 1
+
+Isso representa a certeza de que algum resultado possível ocorrerá.
+
+## Terceiro axioma: aditividade para eventos mutuamente exclusivos
+
+Se A e B são eventos mutuamente exclusivos, então:
+
+P(A ∪ B) = P(A) + P(B)
+
+De forma mais geral, para eventos mutuamente exclusivos A₁, A₂, A₃, ...:
+
+P(A₁ ∪ A₂ ∪ A₃ ∪ ...) = P(A₁) + P(A₂) + P(A₃) + ...
+
+desde que os eventos sejam dois a dois mutuamente exclusivos.
+
+## Interpretação dos axiomas
+
+Os três axiomas formam a base da teoria moderna das probabilidades.
+
+O primeiro estabelece que probabilidades não podem ser negativas. O segundo determina que a probabilidade do espaço amostral é 1. O terceiro determina como calcular a probabilidade da união de eventos que não podem ocorrer simultaneamente.
+
+A partir desses axiomas, várias outras propriedades podem ser demonstradas.
+
+# Propriedades da probabilidade
+
+## Probabilidade do evento impossível
+
+O evento impossível é representado pelo conjunto vazio ∅.
+
+Vamos demonstrar que:
+
+P(∅) = 0
+
+Como Ω e ∅ são mutuamente exclusivos e:
+
+Ω ∪ ∅ = Ω
+
+pelo terceiro axioma:
+
+P(Ω ∪ ∅) = P(Ω) + P(∅)
+
+Como P(Ω) = 1:
+
+1 = 1 + P(∅)
+
+Subtraindo 1 dos dois lados:
+
+P(∅) = 0
+
+Portanto, o evento impossível possui probabilidade igual a zero.
+
+## Probabilidade do evento certo
+
+O evento certo é o próprio espaço amostral Ω.
+
+Pelo segundo axioma:
+
+P(Ω) = 1
+
+Logo, a probabilidade de ocorrer algum resultado pertencente ao espaço amostral é 1, ou seja, 100%.
+
+## Probabilidade do evento complementar
+
+Uma propriedade fundamental é:
+
+P(Aᶜ) = 1 - P(A)
+
+### Demonstração
+
+Sabemos que A e Aᶜ são mutuamente exclusivos e que:
+
+A ∪ Aᶜ = Ω
+
+Pelo terceiro axioma:
+
+P(A ∪ Aᶜ) = P(A) + P(Aᶜ)
+
+Como:
+
+P(Ω) = 1
+
+temos:
+
+1 = P(A) + P(Aᶜ)
+
+Logo:
+
+P(Aᶜ) = 1 - P(A)
+
+Essa propriedade é bastante útil quando é mais simples calcular a probabilidade de um evento não ocorrer.
+
+## Monotonicidade
+
+Se A está contido em B, isto é:
+
+A ⊆ B
+
+então:
+
+P(A) ≤ P(B)
+
+### Demonstração
+
+Se A ⊆ B, podemos escrever B como a união de A com a parte de B que não pertence a A:
+
+B = A ∪ (B - A)
+
+Os eventos A e B - A são mutuamente exclusivos.
+
+Portanto:
+
+P(B) = P(A) + P(B - A)
+
+Como toda probabilidade é não negativa:
+
+P(B - A) ≥ 0
+
+Logo:
+
+P(B) ≥ P(A)
+
+Portanto:
+
+P(A) ≤ P(B)
+
+Essa propriedade é intuitiva: se A representa uma parte dos resultados possíveis de B, sua probabilidade não pode ser maior que a probabilidade de B.
+
+## Aditividade para eventos disjuntos
+
+Se A e B são mutuamente exclusivos:
+
+A ∩ B = ∅
+
+então:
+
+P(A ∪ B) = P(A) + P(B)
+
+Por exemplo, em um lançamento de dado:
+
+A = {1}
+
+B = {6}
+
+Como os dois eventos não podem ocorrer simultaneamente:
+
+P(A ∪ B) = P(A) + P(B)
+
+Considerando um dado equilibrado:
+
+P(A) = 1/6
+
+P(B) = 1/6
+
+Portanto:
+
+P(A ∪ B) = 1/6 + 1/6 = 2/6 = 1/3
+
+## Probabilidade da união de eventos não disjuntos
+
+Quando dois eventos podem ocorrer simultaneamente, não podemos simplesmente somar suas probabilidades, pois a interseção seria contada duas vezes.
+
+A fórmula correta é:
+
+P(A ∪ B) = P(A) + P(B) - P(A ∩ B)
+
+### Demonstração
+
+A soma P(A) + P(B) conta todos os elementos de A e todos os elementos de B. Entretanto, os elementos pertencentes simultaneamente a A e B aparecem duas vezes.
+
+Por isso, é necessário retirar uma vez a probabilidade da interseção:
+
+P(A ∪ B) = P(A) + P(B) - P(A ∩ B)
+
+Essa fórmula é fundamental para evitar dupla contagem.
+
+# Independência de eventos
+
+A independência é um dos conceitos mais importantes da teoria das probabilidades.
+
+Dois eventos A e B são independentes quando a ocorrência de um deles não altera a probabilidade de ocorrência do outro.
+
+Formalmente:
+
+P(A ∩ B) = P(A)P(B)
+
+Essa igualdade constitui a definição de independência para dois eventos.
+
+## Interpretação
+
+Suponha que uma moeda seja lançada duas vezes.
+
+Defina:
+
+A = "obter cara no primeiro lançamento"
+
+B = "obter cara no segundo lançamento"
+
+O resultado do primeiro lançamento não altera a probabilidade do segundo lançamento.
+
+Temos:
+
+P(A) = 1/2
+
+P(B) = 1/2
+
+e:
+
+P(A ∩ B) = 1/4
+
+Como:
+
+P(A)P(B) = 1/2 × 1/2 = 1/4
+
+temos:
+
+P(A ∩ B) = P(A)P(B)
+
+Portanto, A e B são independentes.
+
+## Independência e exclusão mútua
+
+É importante não confundir independência com exclusão mútua.
+
+Eventos mutuamente exclusivos não podem ocorrer simultaneamente.
+
+Eventos independentes podem ocorrer simultaneamente, mas a ocorrência de um não altera a probabilidade do outro.
+
+De fato, dois eventos mutuamente exclusivos e com probabilidades positivas não podem ser independentes.
+
+### Demonstração
+
+Suponha que A e B sejam mutuamente exclusivos.
+
+Então:
+
+P(A ∩ B) = 0
+
+Se fossem também independentes, teríamos:
+
+P(A ∩ B) = P(A)P(B)
+
+Logo:
+
+P(A)P(B) = 0
+
+Isso só é possível se pelo menos uma das probabilidades for zero.
+
+Portanto, eventos mutuamente exclusivos com probabilidades positivas são dependentes.
+
+## Independência de múltiplos eventos
+
+Para três eventos A, B e C serem mutuamente independentes, não basta verificar apenas que cada par é independente.
+
+É necessário que:
+
+P(A ∩ B) = P(A)P(B)
+
+P(A ∩ C) = P(A)P(C)
+
+P(B ∩ C) = P(B)P(C)
+
+e também:
+
+P(A ∩ B ∩ C) = P(A)P(B)P(C)
+
+Para um conjunto maior de eventos, a independência mútua exige que a probabilidade da interseção de qualquer subconjunto desses eventos seja igual ao produto das probabilidades correspondentes.
+
+Essa condição é mais forte do que simplesmente verificar a independência de cada par.
+
+## Exemplo e contraexemplo
+
+Um exemplo de eventos independentes ocorre em lançamentos sucessivos de uma moeda equilibrada, desde que os lançamentos não interfiram entre si.
+
+Um contraexemplo pode ser obtido no lançamento de um único dado.
+
+Considere:
+
+A = "obter número par"
+
+B = "obter número maior que 3"
+
+Temos:
+
+A = {2, 4, 6}
+
+B = {4, 5, 6}
+
+A ∩ B = {4, 6}
+
+Portanto:
+
+P(A) = 3/6 = 1/2
+
+P(B) = 3/6 = 1/2
+
+P(A ∩ B) = 2/6 = 1/3
+
+Por outro lado:
+
+P(A)P(B) = 1/2 × 1/2 = 1/4
+
+Como:
+
+1/3 ≠ 1/4
+
+os eventos não são independentes.
+
+# Teorema da Probabilidade Total
+
+O Teorema da Probabilidade Total permite calcular a probabilidade de um evento considerando diferentes situações ou grupos que formam uma partição do espaço amostral.
+
+## Partição do espaço amostral
+
+Uma coleção de eventos B₁, B₂, ..., Bₙ forma uma partição de Ω quando:
+
+1. Os eventos são dois a dois mutuamente exclusivos.
+2. A união de todos eles é o espaço amostral.
+
+Assim:
+
+B₁ ∪ B₂ ∪ ... ∪ Bₙ = Ω
+
+e:
+
+Bᵢ ∩ Bⱼ = ∅, para i diferente de j.
+
+Isso significa que todo resultado pertence a exatamente uma das partes da partição.
+
+## Enunciado do Teorema da Probabilidade Total
+
+Se B₁, B₂, ..., Bₙ formam uma partição de Ω e possuem probabilidades positivas, então, para qualquer evento A:
+
+P(A) = P(A|B₁)P(B₁) + P(A|B₂)P(B₂) + ... + P(A|Bₙ)P(Bₙ)
+
+Em forma compacta:
+
+P(A) = Σ P(A|Bᵢ)P(Bᵢ)
+
+## Demonstração
+
+Como B₁, B₂, ..., Bₙ formam uma partição de Ω:
+
+A = (A ∩ B₁) ∪ (A ∩ B₂) ∪ ... ∪ (A ∩ Bₙ)
+
+Esses eventos são mutuamente exclusivos.
+
+Pela aditividade:
+
+P(A) = P(A ∩ B₁) + P(A ∩ B₂) + ... + P(A ∩ Bₙ)
+
+Pela definição de probabilidade condicional:
+
+P(A ∩ Bᵢ) = P(A|Bᵢ)P(Bᵢ)
+
+Substituindo cada termo:
+
+P(A) = P(A|B₁)P(B₁) + ... + P(A|Bₙ)P(Bₙ)
+
+Assim, está demonstrado o Teorema da Probabilidade Total.
+
+## Exemplo de aplicação
+
+Suponha que uma escola possua três turmas que representam, respectivamente, 40%, 35% e 25% dos estudantes.
+
+Considere que a probabilidade de um estudante apresentar determinada característica seja:
+
+* 10% na primeira turma;
+* 20% na segunda turma;
+* 30% na terceira turma.
+
+A probabilidade de um estudante escolhido aleatoriamente apresentar essa característica é:
+
+P(A) = 0,10 × 0,40 + 0,20 × 0,35 + 0,30 × 0,25
+
+P(A) = 0,04 + 0,07 + 0,075
+
+P(A) = 0,185
+
+Portanto:
+
+P(A) = 18,5%
+
+O exemplo mostra como o teorema permite combinar probabilidades condicionais de diferentes grupos.
+
+# Teorema de Bayes
+
+O Teorema de Bayes permite inverter uma probabilidade condicional. Em outras palavras, ele permite calcular a probabilidade de uma causa ou condição após observar determinado resultado.
+
+Esse resultado é particularmente importante em situações de diagnóstico, classificação, tomada de decisão e análise de evidências.
+
+## Enunciado
+
+Se B₁, B₂, ..., Bₙ formam uma partição de Ω e A é um evento com probabilidade positiva, então:
+
+P(Bᵢ|A) = P(A|Bᵢ)P(Bᵢ) / P(A)
+
+Utilizando o Teorema da Probabilidade Total:
+
+P(Bᵢ|A) =
+P(A|Bᵢ)P(Bᵢ) /
+[P(A|B₁)P(B₁) + ... + P(A|Bₙ)P(Bₙ)]
+
+## Demonstração
+
+Pela definição de probabilidade condicional:
+
+P(Bᵢ|A) = P(Bᵢ ∩ A) / P(A)
+
+Pela comutatividade da interseção:
+
+P(Bᵢ ∩ A) = P(A ∩ Bᵢ)
+
+Logo:
+
+P(Bᵢ|A) = P(A ∩ Bᵢ) / P(A)
+
+Novamente pela definição de probabilidade condicional:
+
+P(A ∩ Bᵢ) = P(A|Bᵢ)P(Bᵢ)
+
+Portanto:
+
+P(Bᵢ|A) = P(A|Bᵢ)P(Bᵢ) / P(A)
+
+Assim, obtemos o Teorema de Bayes.
+
+## Interpretação
+
+O Teorema de Bayes mostra que a probabilidade de uma hipótese após observar uma evidência depende de três elementos:
+
+* a probabilidade da evidência quando a hipótese é verdadeira;
+* a probabilidade inicial da hipótese;
+* a probabilidade total da evidência.
+
+Essa interpretação é importante porque uma evidência aparentemente forte pode não significar que a hipótese seja altamente provável. É necessário considerar também a frequência inicial da hipótese na população.
+
+# Aplicação na Educação Básica
+
+Os conceitos estudados possuem diversas possibilidades de aplicação no ensino de Matemática da Educação Básica.
+
+O espaço amostral pode ser trabalhado por meio de experimentos simples, como lançamentos de moedas, dados, sorteios e roletas.
+
+As operações entre eventos podem ser exploradas por meio de diagramas de Venn, tabelas e situações-problema.
+
+Os conceitos de probabilidade podem ser relacionados a situações do cotidiano dos estudantes, permitindo discutir incerteza, risco e tomada de decisão.
+
+A independência pode ser trabalhada por meio de experimentos repetidos, comparando situações em que um resultado interfere ou não interfere no outro.
+
+O Teorema da Probabilidade Total pode ser introduzido em situações envolvendo diferentes grupos de estudantes, turmas ou categorias.
+
+Já o Teorema de Bayes pode ser apresentado inicialmente por meio de tabelas de dupla entrada, diagramas de árvore e situações contextualizadas, antes da formalização algébrica.
+
+Na Educação Básica, é especialmente importante trabalhar a interpretação dos resultados. Mais do que realizar cálculos, o estudante precisa compreender o significado da probabilidade encontrada e reconhecer situações em que uma interpretação intuitiva pode levar a conclusões equivocadas.
+
+A situação-problema apresentada neste relatório é um exemplo dessa possibilidade. O resultado do teste parece inicialmente indicar uma probabilidade muito alta de doença, mas a análise correta exige considerar a prevalência da doença e também a ocorrência de resultados falso-positivos.
+
+# Situação-problema: O teste da Doença Rara na Escola
+
+Uma escola pública decidiu realizar, em caráter experimental, um programa de triagem para uma doença infecciosa rara entre seus 1.200 estudantes.
+
+A doença afeta 1 em cada 100 estudantes da população escolar.
+
+O teste apresenta as seguintes características:
+
+* Sensibilidade: se o estudante possui a doença, o teste é positivo em 90% dos casos.
+* Especificidade: se o estudante não possui a doença, o teste é negativo em 95% dos casos.
+
+Um estudante é escolhido ao acaso e apresenta resultado positivo no teste.
+
+A pergunta central é:
+
+Qual é a probabilidade de esse estudante realmente ter a doença?
+
+## Organização dos dados
+
+Definiremos:
+
+D = estudante possui a doença
+
+Dᶜ = estudante não possui a doença
+
+* = teste positivo
+
+A prevalência da doença é de 1 em cada 100 estudantes:
+
+P(D) = 1/100 = 0,01
+
+Portanto:
+
+P(D) = 1%
+
+Consequentemente:
+
+P(Dᶜ) = 1 - 0,01 = 0,99
+
+ou:
+
+P(Dᶜ) = 99%
+
+A sensibilidade do teste informa que:
+
+P(+|D) = 0,90
+
+A especificidade é de 95%. Isso significa que:
+
+P(-|Dᶜ) = 0,95
+
+Como estamos interessados em resultados positivos entre estudantes que não possuem a doença, precisamos do complemento da especificidade:
+
+P(+|Dᶜ) = 1 - 0,95
+
+Portanto:
+
+P(+|Dᶜ) = 0,05
+
+Isso significa que 5% dos estudantes que não possuem a doença podem apresentar resultado positivo. Esses resultados são chamados de falso-positivos.
+
+## Aplicação do Teorema de Bayes
+
+Queremos calcular:
+
+P(D|+)
+
+Pelo Teorema de Bayes:
+
+P(D|+) = P(+|D)P(D) / P(+)
+
+Para determinar P(+), utilizaremos o Teorema da Probabilidade Total.
+
+O resultado positivo pode acontecer em duas situações:
+
+1. O estudante possui a doença e testa positivo.
+2. O estudante não possui a doença e testa positivo.
+
+Assim:
+
+P(+) = P(+|D)P(D) + P(+|Dᶜ)P(Dᶜ)
+
+Substituindo os valores:
+
+P(+) = 0,90 × 0,01 + 0,05 × 0,99
+
+P(+) = 0,009 + 0,0495
+
+P(+) = 0,0585
+
+Agora aplicamos Bayes:
+
+P(D|+) = (0,90 × 0,01) / 0,0585
+
+P(D|+) = 0,009 / 0,0585
+
+P(D|+) ≈ 0,153846
+
+Convertendo para porcentagem:
+
+P(D|+) ≈ 15,38%
+
+Portanto, a probabilidade de o estudante realmente ter a doença, sabendo que seu teste apresentou resultado positivo, é aproximadamente:
+
+**15,38%**
+
+## Interpretação por meio dos 1.200 estudantes
+
+Também podemos compreender o resultado utilizando a quantidade de estudantes da escola.
+
+A doença afeta 1% dos 1.200 estudantes:
+
+1.200 × 0,01 = 12
+
+Assim, aproximadamente 12 estudantes teriam a doença.
+
+Como a sensibilidade é de 90%, entre esses 12 estudantes aproximadamente:
+
+12 × 0,90 = 10,8
+
+ou seja, seriam esperados aproximadamente 10,8 resultados positivos entre estudantes realmente doentes.
+
+Agora consideremos os estudantes que não possuem a doença.
+
+São:
+
+1.200 - 12 = 1.188
+
+Como 5% deles podem apresentar falso positivo:
+
+1.188 × 0,05 = 59,4
+
+Assim, seriam esperados aproximadamente 59,4 resultados falso-positivos.
+
+Portanto, o número esperado de resultados positivos seria:
+
+10,8 + 59,4 = 70,2
+
+Dos aproximadamente 70,2 resultados positivos, apenas 10,8 corresponderiam a estudantes realmente doentes.
+
+Assim:
+
+10,8 / 70,2 ≈ 0,153846
+
+ou:
+
+15,38%
+
+Esse raciocínio confirma o resultado obtido pelo Teorema de Bayes.
+
+## Por que a resposta não é 90%?
+
+A resposta de 90% aparece porque a sensibilidade do teste é de 90%.
+
+Entretanto, essa informação responde a uma pergunta diferente.
+
+A sensibilidade informa:
+
+"Qual é a probabilidade de o teste ser positivo quando o estudante realmente possui a doença?"
+
+Em símbolos:
+
+P(+|D) = 90%
+
+A pergunta da situação-problema é outra:
+
+"Qual é a probabilidade de o estudante possuir a doença sabendo que o teste foi positivo?"
+
+Em símbolos:
+
+P(D|+)
+
+Essas duas probabilidades não são iguais.
+
+Essa diferença é justamente uma das principais aplicações do Teorema de Bayes.
+
+O teste apresenta boa capacidade de detectar a doença quando ela está presente, mas a doença é rara na população. Como consequência, existem muitos estudantes sem a doença e, entre eles, uma parcela de 5% pode apresentar resultado positivo.
+
+Portanto, mesmo diante de um teste positivo, é necessário considerar a prevalência da doença e os resultados falso-positivos.
+
+O resultado de 15,38% mostra a importância de analisar conjuntamente a sensibilidade, a especificidade e a prevalência.
+
+# Considerações finais
+
+O estudo da teoria das probabilidades permite compreender matematicamente situações nas quais existe incerteza. Os conceitos de espaço amostral e eventos fornecem a estrutura inicial para representar os resultados possíveis de um experimento aleatório.
+
+Os axiomas de Kolmogorov estabelecem os fundamentos da medida de probabilidade. A partir deles, é possível demonstrar propriedades importantes, como a probabilidade do evento impossível, a probabilidade do complementar, a monotonicidade e as regras de aditividade.
+
+A independência de eventos constitui outro conceito fundamental. A análise mostrou que independência e exclusão mútua são conceitos diferentes e que eventos mutuamente exclusivos com probabilidades positivas não podem ser independentes.
+
+O Teorema da Probabilidade Total permite decompor a ocorrência de um evento em diferentes situações que formam uma partição do espaço amostral. Já o Teorema de Bayes possibilita inverter probabilidades condicionais e interpretar uma evidência diante de uma hipótese.
+
+A situação-problema do teste da Doença Rara na Escola demonstrou a importância desses conceitos em uma situação concreta. Embora a sensibilidade do teste seja de 90%, a probabilidade de um estudante realmente possuir a doença após receber um resultado positivo é de aproximadamente 15,38%. Essa diferença ocorre porque a doença apresenta baixa prevalência e porque o teste também produz resultados falso-positivos.
+
+Do ponto de vista da Educação Básica, situações como essa são importantes porque permitem trabalhar não apenas técnicas de cálculo, mas também interpretação matemática. O estudante pode perceber que uma informação estatística aparentemente simples pode assumir significados diferentes dependendo da forma como a pergunta é formulada.
+
+Dessa maneira, o ensino de probabilidade pode contribuir para o desenvolvimento do raciocínio lógico, da capacidade de interpretar informações e da tomada de decisões fundamentadas em evidências. A compreensão desses conceitos ultrapassa o domínio de fórmulas e favorece uma leitura mais crítica de situações presentes no cotidiano.
+
+# Síntese dos principais resultados
+
+Ao longo do relatório foram estabelecidos os seguintes resultados fundamentais:
+
+* P(Ω) = 1
+* P(∅) = 0
+* P(Aᶜ) = 1 - P(A)
+* Se A ⊆ B, então P(A) ≤ P(B)
+* Se A e B são mutuamente exclusivos, então P(A ∪ B) = P(A) + P(B)
+* P(A ∪ B) = P(A) + P(B) - P(A ∩ B)
+* A e B são independentes quando P(A ∩ B) = P(A)P(B)
+* P(A) = Σ P(A|Bᵢ)P(Bᵢ), pelo Teorema da Probabilidade Total
+* P(Bᵢ|A) = P(A|Bᵢ)P(Bᵢ) / P(A), pelo Teorema de Bayes
+* Na situação-problema, P(D|+) ≈ 15,38%
+
+# Conclusão
+
+A construção deste relatório permitiu organizar os principais conceitos da teoria das probabilidades de forma articulada, partindo da linguagem dos conjuntos e chegando a resultados fundamentais como o Teorema da Probabilidade Total e o Teorema de Bayes.
+
+A análise da situação-problema evidencia que o conhecimento probabilístico é essencial para interpretar corretamente informações e evitar conclusões baseadas apenas na intuição. No contexto educacional, esse aspecto possui grande relevância, pois permite desenvolver nos estudantes uma compreensão mais rigorosa da incerteza, das evidências e das relações entre diferentes eventos.
+
+Assim, a teoria das probabilidades não deve ser compreendida apenas como um conjunto de fórmulas, mas como uma ferramenta matemática para representar, analisar e interpretar fenômenos aleatórios presentes na vida cotidiana e em diferentes áreas do conhecimento.
