@@ -470,3 +470,7 @@ BUSSAB, W. O.; MORETTIN, P. A. **Estatística Básica**. São Paulo: Saraiva.
 MONTGOMERY, D. C.; RUNGER, G. C. **Estatística Aplicada e Probabilidade para Engenheiros**. Rio de Janeiro: LTC.
 
 R CORE TEAM. **R: A Language and Environment for Statistical Computing**. Vienna: R Foundation for Statistical Computing. Disponível em: https://www.R-project.org/.
+
+https://bendeivide.github.io/courses/profmat-probest/normal2026.2/
+
+https://bendeivide.github.io/books/estbasica/
